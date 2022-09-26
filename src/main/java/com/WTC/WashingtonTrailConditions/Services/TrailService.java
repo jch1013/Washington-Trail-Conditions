@@ -7,6 +7,7 @@ import java.util.List;
 import com.WTC.WashingtonTrailConditions.Models.Trail;
 import com.WTC.WashingtonTrailConditions.Repositories.TrailRepository;
 ;
+import org.hibernate.id.IncrementGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +32,9 @@ public class TrailService {
     public List<Trail> getByKeyword(String keyword){
         System.out.println("Searching by keyword: " + keyword);
         return repository.findByKeyword(keyword);
+    }
+
+    public Trail getByID(Integer value) {
+        return repository.getReferenceById(value);
     }
 }

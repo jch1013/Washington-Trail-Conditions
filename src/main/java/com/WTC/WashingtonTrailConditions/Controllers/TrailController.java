@@ -32,19 +32,18 @@ public class TrailController {
     }
 
 
-    @RequestMapping(value = "/redirt", method = RequestMethod.GET)
-    public ModelAndView method(Trail trail) {
-        System.out.println("Clicked on link");
-        System.out.println(trail.getLink());
-        return new ModelAndView("redirect:" + "http://www.wta.org");
+    // This controller redirects the user to the WTA trail page when the button to view on WTA is clicked
+    @RequestMapping ("/redirect")
+    public ModelAndView getFromWTA(@ModelAttribute Trail trail, Model model, Errors errors) {
+        return new ModelAndView("redirect:" + trail.getLink());
     }
 
-    @RequestMapping ("/redirect")
-    public String getWTA(@ModelAttribute Trail trail, Model model, Errors errors) {
-        System.out.println("Ran redirect");
-        System.out.println(model);
-        System.out.println(trail);
-        return " ";
+    @RequestMapping("/trail")
+    public String getTrail(@ModelAttribute Trail trail, Model model) {
+        Trail requestedTrail = service.getByID(trail.getId());
+        System.out.println(requestedTrail);
+        model.addAttribute("trail", requestedTrail);
+        return "trailpage";
     }
 
 }

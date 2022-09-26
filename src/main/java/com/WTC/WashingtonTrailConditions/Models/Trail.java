@@ -67,6 +67,10 @@ public class Trail {
         this.link = setLink;
     }
 
+    public void setId(Integer setId) { this.id = setId;}
+
+    public void setImageLink(String setImage) { this.imageLink = setImage;}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
