@@ -39,8 +39,10 @@ public class TrailController {
         return new ModelAndView("redirect:" + "http://www.wta.org");
     }
 
-    @PostMapping("/redirect")
+    @RequestMapping ("/redirect")
     public String getWTA(@ModelAttribute Trail trail, Model model, Errors errors) {
+        System.out.println("Ran redirect");
+        System.out.println(model);
         System.out.println(trail);
         return " ";
     }

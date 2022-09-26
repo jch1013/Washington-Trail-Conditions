@@ -63,6 +63,10 @@ public class Trail {
         return link;
     }
 
+    public void setLink(String setLink) {
+        this.link = setLink;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -31,10 +31,11 @@
       <td th:text="${l.name}"></td>
       <td th:text="${l.region}"></td>
       <td th:text="${l.latitude}"></td>
-      <td th:text="${l.longitude}"></td>
+      <td th:text="${l.link}"></td>
       <td>
-        <form action="#" th:action="@{/redirect}" th:object="${trail}" method="post">
-          <button type="submit" th:field="*{name}">View on WTA</button>
+        <form th:action="@{/redirect}" th:object="${trail}" method="post">
+          <input type="hidden" name="link" th:value="${l.link}" />
+          <button type="submit">View on WTA</button>
         </form>
       </td>
     </tr>
