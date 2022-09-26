@@ -2,6 +2,8 @@ package com.WTC.WashingtonTrailConditions.Controllers;
 
 import java.util.List;
 
+import com.WTC.WashingtonTrailConditions.DataScrapers.AirQuality;
+import com.WTC.WashingtonTrailConditions.Models.Conditions;
 import com.WTC.WashingtonTrailConditions.Models.Trail;
 import com.WTC.WashingtonTrailConditions.Services.TrailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +22,7 @@ public class TrailController {
 
     @Autowired
     private TrailService service;
-    @RequestMapping(path = {"/","/search"})
-    public String home(Trail trail, Model model, String keyword) {
-        if (keyword!=null) {
-            List<Trail> list = service.getByKeyword(keyword);
-            model.addAttribute("list", list);
-        }else {
-            List<Trail> list = service.getAllTrails();
-            model.addAttribute("list", list);}
-        return "searchresults";
-    }
+
 
 
     // This controller redirects the user to the WTA trail page when the button to view on WTA is clicked
@@ -43,6 +36,9 @@ public class TrailController {
         Trail requestedTrail = service.getByID(trail.getId());
         System.out.println(requestedTrail);
         model.addAttribute("trail", requestedTrail);
+        Conditions currentConditions = new Conditions("Hello", "World");
+
+        model.addAttribute("conditions", currentConditions);
         return "trailpage";
     }
 
