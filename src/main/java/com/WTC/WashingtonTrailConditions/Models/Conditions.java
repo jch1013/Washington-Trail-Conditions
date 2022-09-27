@@ -1,11 +1,12 @@
 package com.WTC.WashingtonTrailConditions.Models;
 
 import com.WTC.WashingtonTrailConditions.DataScrapers.AirQuality;
+import com.WTC.WashingtonTrailConditions.DataScrapers.Weather;
 
 import java.util.List;
 
 public class Conditions {
-    private List<String> weatherForecasts;
+    private Weather weather;
     private AirQuality airQuality;
     //add more fields here as needed
 

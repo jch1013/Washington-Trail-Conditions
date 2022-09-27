@@ -13,6 +13,6 @@ public class AirQuality {
 
     // Scrape web for data on current air quality
     public String setAQ(String lat, String lon) {
-        return "trying to return through conditions calss";
+        return "Returning Air Quality from web scraping function";
     }
 }
