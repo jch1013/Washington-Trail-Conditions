@@ -8,39 +8,42 @@
   <title>Search results</title>
 </head>
 <body>
-<div class="main-container">
-  <h2 align="center">Search Results</h2>
-  <form th:action="@{/search}" method="get">
-    <input type="text" name="keyword" th:value="${keyword}"  placeholder="Search for a trail..." size="50" >
-    <button type="submit" class="btn btn-info" >Search</button>
-    <button type="submit" class="btn btn-info" >Reset</button>
-  </form>
-  <table class="results-table">
-    <thead>
-    <tr>
-      <th>Trail Name</th>
-      <th>Region</th>
-      <th>Link</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="l : ${list}" th:field="${l}">
-      <td>
-        <form th:action="@{/trail}" th:object="${trail}" method="post">
-          <input type="hidden" name="id" th:value="${l.id}" />
-          <button type="submit" th:text="${l.name}">View on WTA</button>
-        </form>
-      </td>
-      <td th:text="${l.region}"></td>
-      <td>
-        <form th:action="@{/redirect}" th:object="${trail}" method="post">
-          <input type="hidden" name="link" th:value="${l.link}" />
-          <button type="submit">View on WTA</button>
-        </form>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+<div class="whole-page">
+  <div class="main-container">
+    <h2 align="center">Search Results</h2>
+    <div>
+      <form th:action="@{/search}" method="get">
+        <input class="searchbar" type="text" name="keyword" th:value="${keyword}"  placeholder="Search for a trail..." size="50" >
+        <button type="submit" class="search-button" >Search</button>
+        <button type="submit" class="reset-button" >Reset</button>
+      </form>
+    </div>
+    <table class="results-table">
+      <tbody>
+      <tr th:each="l : ${list}" th:field="${l}">
+        <td>
+          <div class="condition-form">
+            <form th:action="@{/trail}" th:object="${trail}" method="post">
+              <input type="hidden" name="id" th:value="${l.id}" />
+              <button class = "trail-button" type="submit" th:text="${l.name}">Trail Name</button>
+            </form>
+          </div>
+          <div class="region">
+            <p th:text="${l.region}">this region value is very long lets see what happens</p>
+          </div>
+        </td>
+        <td>
+          <div class="wta-form">
+            <form th:action="@{/redirect}" th:object="${trail}" method="post">
+              <input type="hidden" name="link" th:value="${l.link}" />
+              <button class = "wta-button" type="submit">View on WTA</button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 </body>
 </html>

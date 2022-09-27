@@ -1,8 +1,66 @@
-.main-container {
+.whole-page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
+.main-container {
+    width: 50%;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .results-table {
-    border: 1px solid;
+    width: 100%;
+    justify-content: space-around;
+    margin: 30px;
+    border-collapse: collapse;
 
+}
+
+.results-table tr {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: solid;
+    border-color: gray;
+
+    background-color: #f0f0f0;
+}
+
+.results-table td {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.trail-button {
+    background-color: #8AAB37;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.wta-button {
+    background-color:#8AAB37;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+
+}
+
+.search-button, .reset-button {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.searchbar {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
 }
