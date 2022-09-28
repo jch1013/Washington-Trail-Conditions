@@ -17,11 +17,11 @@ public class SearchController {
     @RequestMapping(path = {"/","/search"})
     public String home(Trail trail, Model model, String keyword) {
         if (keyword!=null) {
-            List<Trail> list = service.getByKeyword(keyword);
-            model.addAttribute("list", list);
+            List<Trail> trails = service.getByKeyword(keyword);
+            model.addAttribute("list", trails);
         }else {
-            List<Trail> list = service.getAllTrails();
-            model.addAttribute("list", list);}
+            List<Trail> trails = service.getAllTrails();
+            model.addAttribute("list", trails);}
         return "searchresults";
     }
 }

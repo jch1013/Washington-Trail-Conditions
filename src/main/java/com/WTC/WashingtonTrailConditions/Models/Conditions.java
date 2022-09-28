@@ -13,10 +13,15 @@ public class Conditions {
 
     public Conditions(String lat, String lon) {
         airQuality = new AirQuality(lat, lon);
+        weather = new Weather(lat, lon);
     }
 
     public String getAirQuality() {
         return airQuality.getAQ();
+    }
+
+    public List<String> getForecasts() {
+        return weather.getForecasts();
     }
 
 

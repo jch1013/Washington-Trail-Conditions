@@ -5,9 +5,18 @@
   <link th:href="@{/CSS/trailpage.css}" rel="stylesheet" />
 </head>
 <body>
-<div class="main-container">
-  <h2 th:text="${trail.getName()}">Trail</h2>
-  <p th:text="${conditions.getAirQuality()}">Air Quality</p>
-</div>
+    <div class="main-container">
+      <h2 th:text="${trail.getName()}">Trail</h2>
+      <p th:text="${conditions.getAirQuality()}">Air Quality</p>
+
+      <table>
+        <tbody>
+          <tr th:each="forecast : ${conditions.getForecasts()}" th:field="${forecast}">
+            <p th:text="${forecast}"></p>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </body>
 </html>

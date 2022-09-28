@@ -36,7 +36,8 @@ public class TrailController {
         Trail requestedTrail = service.getByID(trail.getId());
         System.out.println(requestedTrail);
         model.addAttribute("trail", requestedTrail);
-        Conditions currentConditions = new Conditions("Hello", "World");
+
+        Conditions currentConditions = new Conditions(requestedTrail.getLatitude(), requestedTrail.getLongitude());
 
         model.addAttribute("conditions", currentConditions);
         return "trailpage";
