@@ -16,12 +16,9 @@ public class Conditions {
         weather = new Weather(lat, lon);
     }
 
-    public String getAirQuality() {
-        return airQuality.getAQ();
-    }
-    public String getNextDayAirQuality() {
-        return airQuality.getNextDayAQ();
-    }
+    public String getAirQuality() {return airQuality.getAQ();}
+    public String getNextDayAirQuality() {return airQuality.getNextDayAQ();}
+    public String getFutureAirQuality() {return airQuality.getFutureAQ();}
 
     public List<String> getForecasts() {
         return weather.getForecasts();

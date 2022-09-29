@@ -12,6 +12,7 @@ import java.net.URLConnection;
 public class AirQuality {
     private static String airQuality;
     private static String nextDayAirQuality;
+    private static String futureAirQuality;
     private final String apiKey= "c8af4a9e6dd91c6b03805c5c0258f89f";
 
     public AirQuality(String lat, String lon) {
@@ -22,13 +23,9 @@ public class AirQuality {
         }
     }
 
-    public static String getAQ() {
-        return airQuality;
-    }
-
-    public static String getNextDayAQ() {
-        return nextDayAirQuality;
-    }
+    public static String getAQ() {return airQuality;}
+    public static String getNextDayAQ() {return nextDayAirQuality;}
+    public static String getFutureAQ() {return futureAirQuality;}
 
     private String currentLink(String lat, String lon) {
         return "http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
@@ -37,15 +34,13 @@ public class AirQuality {
 
     // Scrape web for data on current air quality
     private void setAQ(String lat, String lon) throws IOException {
-
-        // get air quality data from openweather api as a json string
         try {
+            // Get all air quality data from openweather api as json string and save it as StringBuilder object
             StringBuilder result = new StringBuilder();
             URL url = new URL(currentLink(lat, lon));
             URLConnection connection = url.openConnection();
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String line;
-
             while ((line = reader.readLine()) != null) {
                 result.append(line);
             }
@@ -60,6 +55,7 @@ public class AirQuality {
             Integer currentAirValue = currentAir.getInt("aqi");
             airQuality = "Current Air Quality Index Range: " + getAQImessage(currentAirValue);
 
+            // Calculate average air quality for next 24 hours
             int nextDayTotal = 0;
             for (int i = 1; i < 25; i++) {
                 JSONObject airForecast = array.getJSONObject(i).getJSONObject("main");
@@ -68,7 +64,16 @@ public class AirQuality {
             }
             double nextDayAverage = nextDayTotal / 24.0;
             nextDayAirQuality = "24 Hour Average Air Quality Forecast: " + getAQImessage(nextDayAverage);
-            System.out.println(nextDayAirQuality);
+
+            // Calcualte average air quality for 24-48 hours from current time
+            int futureTotal = 0;
+            for (int i = 25; i < 49; i++) {
+                JSONObject airForecast = array.getJSONObject(i).getJSONObject("main");
+                Integer forecastedAirValue = airForecast.getInt("aqi");
+                futureTotal += forecastedAirValue;
+            }
+            double futureAverage = futureTotal / 24.0;
+            futureAirQuality = "24 to 48 hour average air quality forecast: " + getAQImessage(futureAverage);
 
 
         } catch (IOException ioe) {

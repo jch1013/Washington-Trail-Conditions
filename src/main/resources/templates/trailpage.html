@@ -14,7 +14,9 @@
           <button type="submit" class="header-button" >Search</button>
           <button type="submit" class="header-button" >Reset</button>
         </form>
-        <button class="header-button">Home</button>
+        <form th:action="@{/home}" method="get">
+          <button type="submit" class="header-button">Home</button>
+        </form>
       </div>
     </div>
     <div class="title">
@@ -28,7 +30,7 @@
     <div class="warning">
       <p>
         * This page is only intended to give a rough idea of the trail conditions, and forecasted conditions may
-        be innacurate. Always confirm conditions with an outside source before hiking.
+        be inaccurate. Always confirm conditions with an outside source before hiking.
       </p>
       <p>
         ** Current conditions are calculated <strong>using the coordinate location of the trailhead</strong>.
@@ -50,6 +52,7 @@
       <h4 align="center">Air Quality Forecast</h4>
       <p th:text="${conditions.getAirQuality()}">Current air quality</p>
       <p th:text="${conditions.getNextDayAirQuality()}">Next day air quality</p>
+      <p th:text="${conditions.getFutureAirQuality()}">48 hour air quality</p>
     </div>
     <div class="snow-forecast">
       <h4 align="center">Snow Forecast</h4>

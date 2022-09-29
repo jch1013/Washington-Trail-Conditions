@@ -14,7 +14,7 @@ import java.util.List;
 public class SearchController {
     @Autowired
     private TrailService service;
-    @RequestMapping(path = {"/","/search"})
+    @RequestMapping(path = {"/search"})
     public String home(Trail trail, Model model, String keyword) {
         if (keyword!=null) {
             List<Trail> trails = service.getByKeyword(keyword);

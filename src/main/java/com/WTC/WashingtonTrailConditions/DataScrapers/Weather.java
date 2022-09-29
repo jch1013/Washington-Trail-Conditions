@@ -18,15 +18,14 @@ public class Weather {
         } catch (IOException ioe) {
             forecasts.add("Error retrieving forecast. Please try again later");
         }
-
     }
 
     public List<String> getForecasts() {
         return forecasts;
     }
 
+    // Function is called when object is constructed and scrapes web for weather data at coordinates
     public void addForecasts(String lat, String lon) throws IOException {
-        //scrape web forecasts here and call addForecasts in constructor
         String searchUrl = "https://forecast.weather.gov/MapClick.php?lon=" + URLEncoder.encode(lon, "UTF-8") +
                 "&lat=" + URLEncoder.encode(lat, "UTF-8");
 
@@ -36,7 +35,6 @@ public class Weather {
         client.getOptions().setJavaScriptEnabled(false);
 
         HtmlPage page = client.getPage(searchUrl);
-
         List<HtmlDivision> labels = page.getByXPath("//div[@class='col-sm-2 forecast-label']");
         List<HtmlDivision> forecastText = page.getByXPath("//div[@class='col-sm-10 forecast-text']");
 
