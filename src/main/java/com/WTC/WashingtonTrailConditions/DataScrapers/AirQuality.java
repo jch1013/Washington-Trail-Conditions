@@ -11,13 +11,14 @@ import java.net.URLConnection;
 
 public class AirQuality {
     private static String airQuality;
+    private static String nextDayAirQuality;
     private final String apiKey= "c8af4a9e6dd91c6b03805c5c0258f89f";
 
     public AirQuality(String lat, String lon) {
         try {
-            airQuality = setAQ(lat, lon);
+            setAQ(lat, lon);
         } catch (IOException ioe) {
-            airQuality = "Unable to find air quality";
+            airQuality = "Unable to get air quality data for this location. Please try again later";
         }
     }
 
@@ -25,13 +26,17 @@ public class AirQuality {
         return airQuality;
     }
 
+    public static String getNextDayAQ() {
+        return nextDayAirQuality;
+    }
+
     private String currentLink(String lat, String lon) {
-        return "http://api.openweathermap.org/data/2.5/air_pollution?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
+        return "http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
     }
 
 
     // Scrape web for data on current air quality
-    private String setAQ(String lat, String lon) throws IOException {
+    private void setAQ(String lat, String lon) throws IOException {
 
         // get air quality data from openweather api as a json string
         try {
@@ -49,30 +54,33 @@ public class AirQuality {
             // Extract air quality information from json string
             JSONObject obj = new JSONObject(result.toString());
             JSONArray array = obj.getJSONArray("list");
-            JSONObject aq = array.getJSONObject(0).getJSONObject("main");
-            Integer air = aq.getInt("aqi");
 
-            return "Current Air Quality: " + getAQImessage(air);
+            // Get current air quality
+            JSONObject currentAir = array.getJSONObject(0).getJSONObject("main");
+            Integer currentAirValue = currentAir.getInt("aqi");
+            airQuality = "Current Air Quality Index Range: " + getAQImessage(currentAirValue);
+
+            int nextDayTotal = 0;
+            for (int i = 1; i < 25; i++) {
+                JSONObject airForecast = array.getJSONObject(i).getJSONObject("main");
+                Integer forecastedAirValue = airForecast.getInt("aqi");
+                nextDayTotal += forecastedAirValue;
+            }
+            double nextDayAverage = nextDayTotal / 24.0;
+            nextDayAirQuality = "24 Hour Average Air Quality Forecast: " + getAQImessage(nextDayAverage);
+            System.out.println(nextDayAirQuality);
 
 
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
-            return "Unable to get air quality data for this location. Please try again later";
         }
     }
 
-    private String getAQImessage(int val) {
-        if (val == 1) {
-            return "0 - 50 (good)";
-        } else if (val == 2) {
-            return "50 - 100 (moderate)";
-        } else if (val == 3) {
-            return "100 - 150 (unhealthy for sensitive groups)";
-        } else if (val == 4) {
-            return "150 - 200 (unhealthy)";
-        } else {
-            return "over 200 (very unhealthy)";
-        }
+    // Helper function to translate air quality value to an aqi rating range
+    private String getAQImessage(double val) {
+        int upperBound = (int) (val * 50);
+        int lowerBound = (int) (val * 50.0 - 50);
+        return lowerBound + " - " + upperBound;
     }
 
 

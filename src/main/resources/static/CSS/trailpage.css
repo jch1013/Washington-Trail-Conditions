@@ -1,0 +1,100 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    width: 70%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: solid;
+    border-color: #f0f0f0;
+
+}
+
+.header {
+    background-color: #8AAB37;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.header-actions {
+    display: flex;
+}
+
+.searchbar {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.header-button {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: solid;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.trail-image {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+}
+.image {
+    width:75%;
+    height:auto;
+}
+
+.warning {
+    width: 75%;
+    padding: 10px;
+    margin: 10px;
+    background-color: lightpink;
+}
+
+.weather-forecast {
+    margin: 30px;
+    border-collapse: separate;
+    border-spacing: 10 30px;
+    background-color: #f0f0f0;
+}
+
+th, td {
+    border: none;
+    padding: 10px;
+}
+
+.daily-forecast {
+    margin-top: 100px;
+}
+
+.air-quality-forecast {
+    margin: 30px;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.snow-forecast {
+    margin: 30px;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+

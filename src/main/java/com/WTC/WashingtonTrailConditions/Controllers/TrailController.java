@@ -34,7 +34,6 @@ public class TrailController {
     @RequestMapping("/trail")
     public String getTrail(@ModelAttribute Trail trail, Model model) {
         Trail requestedTrail = service.getByID(trail.getId());
-        System.out.println(requestedTrail);
         model.addAttribute("trail", requestedTrail);
 
         Conditions currentConditions = new Conditions(requestedTrail.getLatitude(), requestedTrail.getLongitude());

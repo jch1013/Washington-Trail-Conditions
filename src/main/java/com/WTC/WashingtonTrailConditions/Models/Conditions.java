@@ -19,6 +19,9 @@ public class Conditions {
     public String getAirQuality() {
         return airQuality.getAQ();
     }
+    public String getNextDayAirQuality() {
+        return airQuality.getNextDayAQ();
+    }
 
     public List<String> getForecasts() {
         return weather.getForecasts();

@@ -2,21 +2,59 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <title>Home Page</title>
-  <link th:href="@{/CSS/trailpage.css}" rel="stylesheet" />
+  <link th:href="@{/CSS/trailpage.css}" rel="stylesheet">
 </head>
 <body>
-    <div class="main-container">
-      <h2 th:text="${trail.getName()}">Trail</h2>
-      <p th:text="${conditions.getAirQuality()}">Air Quality</p>
-
+  <div class="main-container">
+    <div class="header">
+      <h1>Washington Trail Conditions</h1>
+      <div class="header-actions">
+        <form th:action="@{/search}" method="get">
+          <input class="searchbar" type="text" name="keyword" th:value="${keyword}"  placeholder="Search for a trail..." size="50" >
+          <button type="submit" class="header-button" >Search</button>
+          <button type="submit" class="header-button" >Reset</button>
+        </form>
+        <button class="header-button">Home</button>
+      </div>
+    </div>
+    <div class="title">
+      <h5>Conditions for</h5>
+      <h2 th:text="${trail.name}">Trail Name</h2>
+      <h4 th:text="${trail.region}">Trail Region</h4>
+    </div>
+    <div class="trail-image">
+      <img th:src="${trail.imageLink}" class="image">
+    </div>
+    <div class="warning">
+      <p>
+        * This page is only intended to give a rough idea of the trail conditions, and forecasted conditions may
+        be innacurate. Always confirm conditions with an outside source before hiking.
+      </p>
+      <p>
+        ** Current conditions are calculated <strong>using the coordinate location of the trailhead</strong>.
+        Forecasts for longer trails or trails gaining significant elevation may be inaccurate.
+      </p>
+    </div>
+    <div class="weather-forecast">
+      <h4 align="center">Weather Forecast</h4>
       <table>
         <tbody>
-          <tr th:each="forecast : ${conditions.getForecasts()}" th:field="${forecast}">
-            <p th:text="${forecast}"></p>
+        <tr th:each="forecast : ${conditions.getForecasts()}" th:field="${forecast}">
+          <td th:text="${forecast}" class="daily-forecast"></td>
 
-          </tr>
+        </tr>
         </tbody>
       </table>
     </div>
+    <div class="air-quality-forecast">
+      <h4 align="center">Air Quality Forecast</h4>
+      <p th:text="${conditions.getAirQuality()}">Current air quality</p>
+      <p th:text="${conditions.getNextDayAirQuality()}">Next day air quality</p>
+    </div>
+    <div class="snow-forecast">
+      <h4 align="center">Snow Forecast</h4>
+      <p>need to display snow forecast here</p>
+    </div>
+  </div>
 </body>
 </html>
