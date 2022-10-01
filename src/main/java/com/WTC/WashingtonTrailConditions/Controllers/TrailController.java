@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.WTC.WashingtonTrailConditions.DataScrapers.AirQuality;
 import com.WTC.WashingtonTrailConditions.Models.Conditions;
+import com.WTC.WashingtonTrailConditions.Models.SnowConditions;
 import com.WTC.WashingtonTrailConditions.Models.Trail;
 import com.WTC.WashingtonTrailConditions.Services.TrailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,16 @@ public class TrailController {
         model.addAttribute("trail", requestedTrail);
 
         Conditions currentConditions = new Conditions(requestedTrail.getLatitude(), requestedTrail.getLongitude());
+        SnowConditions currentSnow = new SnowConditions(requestedTrail.getLatitude(), requestedTrail.getLongitude());
+
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println(currentSnow.getNearbyStations()[i].getStationName());
+        }
+
 
         model.addAttribute("conditions", currentConditions);
+        model.addAttribute("snowConditions", currentSnow);
         return "trailpage";
     }
 

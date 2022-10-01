@@ -56,7 +56,9 @@
     </div>
     <div class="snow-forecast">
       <h4 align="center">Snow Forecast</h4>
-      <p>need to display snow forecast here</p>
+      <tr th:each="station : ${snowConditions.getNearbyStations()}" th:field="${station}">
+        <td th:text="${station.stationName}"></td>
+      </tr>
     </div>
   </div>
 </body>
