@@ -40,12 +40,6 @@ public class TrailController {
         Conditions currentConditions = new Conditions(requestedTrail.getLatitude(), requestedTrail.getLongitude());
         SnowConditions currentSnow = new SnowConditions(requestedTrail.getLatitude(), requestedTrail.getLongitude());
 
-
-        for (int i = 0; i < 10; i++) {
-            System.out.println(currentSnow.getNearbyStations()[i].getStationName());
-        }
-
-
         model.addAttribute("conditions", currentConditions);
         model.addAttribute("snowConditions", currentSnow);
         return "trailpage";

@@ -10,9 +10,9 @@ import java.util.*;
 
 public class StationData {
     private final int numberOfStations = 10;
-    private final HashMap<Integer, Station> stations = new HashMap<Integer, Station>();
+    private final HashMap<Float, Station> stations = new HashMap<Float, Station>();
     private Station[] nearestStations = new Station[numberOfStations];
-    private final List<Integer> distances = new ArrayList<>();
+    private final List<Float> distances = new ArrayList<>();
 
 
     // Constructors
@@ -67,7 +67,8 @@ public class StationData {
                 float stationSnowDepth = Float.parseFloat(dataFields[7]);
 
                 Station station = new Station(stationName, stationElevation, stationLat, stationLon, stationSnowDepth);
-                int distanceFromTrail = station.distanceTo(Float.parseFloat(lat), Float.parseFloat(lon));
+                float distanceFromTrail = station.distanceTo(Float.parseFloat(lat), Float.parseFloat(lon));
+                station.setDistance(distanceFromTrail);
 
                 stations.put(distanceFromTrail, station);
                 distances.add(distanceFromTrail);
@@ -76,7 +77,7 @@ public class StationData {
             Collections.sort(distances);
 
             for (int i = 0; i < numberOfStations; i++) {
-                int distanceKey = distances.get(i);
+                float distanceKey = distances.get(i);
                 nearestStations[i] = stations.get(distanceKey);
 
             }

@@ -1,5 +1,6 @@
 package com.WTC.WashingtonTrailConditions.DataScrapers;
 
+import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlDivision;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
@@ -34,15 +35,20 @@ public class Weather {
         client.getOptions().setCssEnabled(false);
         client.getOptions().setJavaScriptEnabled(false);
 
-        HtmlPage page = client.getPage(searchUrl);
-        List<HtmlDivision> labels = page.getByXPath("//div[@class='col-sm-2 forecast-label']");
-        List<HtmlDivision> forecastText = page.getByXPath("//div[@class='col-sm-10 forecast-text']");
+        try {
+            HtmlPage page = client.getPage(searchUrl);
+            List<HtmlDivision> labels = page.getByXPath("//div[@class='col-sm-2 forecast-label']");
+            List<HtmlDivision> forecastText = page.getByXPath("//div[@class='col-sm-10 forecast-text']");
 
-        for (int i = 0; i < labels.size(); i++) {
+            for (int i = 0; i < labels.size(); i++) {
 
-            String label = labels.get(i).getTextContent();
-            String text = forecastText.get(i).getTextContent();
-            forecasts.add(label + ": " + text);
+                String label = labels.get(i).getTextContent();
+                String text = forecastText.get(i).getTextContent();
+                forecasts.add(label + ": " + text);
+            }
+        } catch (FailingHttpStatusCodeException failedRequest) {
+            forecasts.add("Error retrieving forecast. Please try again later");
+            forecasts.add("Error message: " + failedRequest.getMessage());
         }
 
     }

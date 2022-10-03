@@ -51,6 +51,12 @@ body {
     padding-right: 25px;
 }
 
+.trail-button {
+    border: none;
+    background-color: Transparent;
+    font-size: 30px;
+}
+
 .trail-image {
     margin-top: 25px;
     display: flex;
@@ -75,6 +81,7 @@ body {
     border-collapse: separate;
     border-spacing: 10 30px;
     background-color: #f0f0f0;
+    width:90%;
 }
 
 th, td {
@@ -82,19 +89,33 @@ th, td {
     padding: 10px;
 }
 
-.daily-forecast {
-    margin-top: 100px;
-}
 
 .air-quality-forecast {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     margin: 30px;
-    padding: 10px;
     background-color: #f0f0f0;
+    width: 90%;
 }
 
 .snow-forecast {
-    margin: 30px;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-collapse: separate;
+    border-spacing: 10 30px;
     background-color: #f0f0f0;
+    width:90%;
+    margin: 30px;
 }
+
+.snow-forecast td {
+    text-align: center;
+}
+
+.snow-forecast.warning {
+    text-align: center;
+}
+
 

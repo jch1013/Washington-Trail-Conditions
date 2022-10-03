@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Home Page</title>
+  <title th:text="${trail.name}">Conditions</title>
   <link th:href="@{/CSS/trailpage.css}" rel="stylesheet">
 </head>
 <body>
@@ -21,7 +21,10 @@
     </div>
     <div class="title">
       <h5>Conditions for</h5>
-      <h2 th:text="${trail.name}">Trail Name</h2>
+      <form th:action="@{/redirect}" th:object="${trail}" method="post">
+        <input type="hidden" name="link" th:value="${trail.link}" />
+        <button class = "trail-button" type="submit" th:text="${trail.name}">View Trail Info</button>
+      </form>
       <h4 th:text="${trail.region}">Trail Region</h4>
     </div>
     <div class="trail-image">
@@ -56,9 +59,19 @@
     </div>
     <div class="snow-forecast">
       <h4 align="center">Snow Forecast</h4>
-      <tr th:each="station : ${snowConditions.getNearbyStations()}" th:field="${station}">
-        <td th:text="${station.stationName}"></td>
-      </tr>
+      <p class="warning">***The data used in this table is provisional and may contain outliers***</p>
+      <table>
+        <th>Station Name</th>
+        <th>Distance from trailhead (miles)</th>
+        <th>Elevation</th>
+        <th>Snow depth (in)</th>
+        <tr th:each="station : ${snowConditions.getNearbyStations()}" th:field="${station}">
+          <td th:text="${station.stationName}" class="station-text">Station name</td>
+          <td th:text="${station.distance}">Distance from trailhead</td>
+          <td th:text="${station.elevation}">Station elevation</td>
+          <td th:text="${station.snowDepth}">Current snow depth</td>
+        </tr>
+      </table>
     </div>
   </div>
 </body>

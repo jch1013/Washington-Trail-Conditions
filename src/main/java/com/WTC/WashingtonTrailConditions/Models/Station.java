@@ -3,6 +3,7 @@ package com.WTC.WashingtonTrailConditions.Models;
 public class Station {
     private String stationName;
     private String elevation;
+    private int distance;
     private float latitude;
     private float longitude;
     private float snowDepth;
@@ -21,19 +22,25 @@ public class Station {
     public float getLatitude() {return latitude;}
     public float getLongitude() {return longitude;}
     public float getSnowDepth() {return snowDepth;}
+    public int getDistance() {return distance;}
 
-    public int distanceTo(float lat, float lon) {
+
+    public void setDistance(float stationDistance) {
+        this.distance = Math.round(stationDistance);
+    }
+
+    public float distanceTo(float lat, float lon) {
         // Use haversine formula to calculate distance from station to provided coordinates
-        double toRadians = Math.PI / 180;
-        double deltaLat = (this.latitude - lat) * toRadians;
-        double deltaLon = (this.longitude - lon) * toRadians;
+        float toRadians = (float) (Math.PI / 180);
+        float deltaLat = (this.latitude - lat) * toRadians;
+        float deltaLon = (this.longitude - lon) * toRadians;
 
-        double a = Math.pow(Math.sin(deltaLat / 2.0),2) +
-                Math.cos(this.latitude * toRadians) * Math.cos(lat * toRadians) * Math.pow(deltaLon / 2, 2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        float a = (float) (Math.pow(Math.sin(deltaLat / 2.0),2) +
+                        Math.cos(this.latitude * toRadians) * Math.cos(lat * toRadians) * Math.pow(deltaLon / 2, 2));
+        float c = (float) (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
         int earthRadius = 3961;
-        double distance = earthRadius * c;
-        return (int) distance;
+        float distance = earthRadius * c;
+        return distance;
     }
 
 }
