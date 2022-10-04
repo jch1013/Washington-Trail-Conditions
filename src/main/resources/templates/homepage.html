@@ -5,15 +5,19 @@
   <link th:href="@{/CSS/homepage.css}" rel="stylesheet">
 </head>
 <body>
-<div class="header">
-  <h1>Washington Trail Conditions</h1>
-  <div class="header-actions">
+<div class="main-container">
+  <div class="header">
+    <h1>Washington Trail Conditions</h1>
+    <div class="header-actions">
+      <button class="header-button">About</button>
+    </div>
+  </div>
+  <img th:src="@{/images/site-background.jpeg}" class="main-image">
+  <div class="search">
     <form th:action="@{/search}" method="get">
       <input class="searchbar" type="text" name="keyword" th:value="${keyword}"  placeholder="Search for a trail..." size="50" >
       <button type="submit" class="header-button" >Search</button>
-      <button type="submit" class="header-button" >Reset</button>
     </form>
-    <button class="header-button">Home</button>
   </div>
 </div>
 </body>
