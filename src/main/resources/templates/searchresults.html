@@ -23,7 +23,7 @@
         </form>
       </div>
     </div>
-    <h2 align="center">Search Results</h2>
+    <h2 align="center">Results</h2>
     <table class="results-table">
       <tbody>
       <tr th:each="l : ${list}" th:field="${l}">
@@ -42,7 +42,7 @@
           <div class="wta-form">
             <form th:action="@{/redirect}" th:object="${trail}" method="post">
               <input type="hidden" name="link" th:value="${l.link}" />
-              <button class = "wta-button" type="submit">View Trail Info</button>
+              <button class = "trail-button" type="submit">View Trail Info</button>
             </form>
           </div>
         </td>

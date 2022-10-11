@@ -27,12 +27,6 @@ html, body {
     display: flex;
 }
 
-.searchbar {
-    background-color: #f0f0f0;
-    border: none;
-    padding: 5px;
-    border-radius: 10px;
-}
 
 .header-button {
     padding: 5px;
@@ -42,14 +36,3 @@ html, body {
     background-color: #f0f0f0;
 }
 
-.search {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-}
-
-.main-image {
-    width: 100%;
-    height: auto;
-}

@@ -11,6 +11,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 
 .header {
@@ -34,6 +35,9 @@
     margin: 5px;
     border-radius: 5px;
     border: none;
+}
+.header-button:hover {
+    background-color: lightgray;
 }
 
 .header-actions {
@@ -71,12 +75,8 @@
     border: none;
 }
 
-.wta-button {
-    background-color:#8AAB37;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-
+.trail-button:hover {
+    background-color: rgb(75, 130, 57);
 }
 
 
