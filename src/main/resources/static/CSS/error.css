@@ -1,21 +1,14 @@
-html, body {
+body {
     display: flex;
-    height: 100%;
-    width: 100%;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-
-.main-container {
-    border: solid;
-    width: 70%;
-    max-width: 800px;
-    max-height: 600px;
+    width: 100%;
 }
 
 .header {
     background-color: #8AAB37;
-    width: 100%;
+    width: 70%;
+    min-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,20 +19,19 @@ html, body {
     display: flex;
 }
 
+.searchbar {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+}
 
 .header-button {
     padding: 5px;
     margin: 5px;
     border-radius: 5px;
     border: none;
-    background-color: #f0f0f0;
 }
-
 .header-button:hover {
     background-color: lightgray;
 }
-
-p {
-    padding: 10px;
-}
-

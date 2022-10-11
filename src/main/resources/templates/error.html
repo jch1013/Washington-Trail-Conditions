@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Error</title>
+  <link th:href="@{/CSS/error.css}" rel="stylesheet">
+</head>
+<body>
+<div class="header">
+  <h1>Washington Trail Conditions</h1>
+  <div class="header-actions">
+    <form th:action="@{/search}" method="get">
+      <input class="searchbar" type="text" name="keyword" th:value="${keyword}"  placeholder="Search for a trail..." size="50" >
+      <button type="submit" class="header-button" >Search</button>
+      <button type="submit" class="header-button" >Reset</button>
+    </form>
+    <form th:action="@{/home}" method="get">
+      <button type="submit" class="header-button">Home</button>
+    </form>
+  </div>
+</div>
+<h2 align="center">Oops! Something went wrong. Please try a different trail.</h2>
+</body>
+</html>
