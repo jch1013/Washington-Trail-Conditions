@@ -53,7 +53,7 @@ public class AirQuality {
             // Get current air quality
             JSONObject currentAir = array.getJSONObject(0).getJSONObject("main");
             Integer currentAirValue = currentAir.getInt("aqi");
-            airQuality = "Current Air Quality Index Range: " + getAQImessage(currentAirValue);
+            airQuality = "Current air quality index range: " + getAQImessage(currentAirValue);
 
             // Calculate average air quality for next 24 hours
             int nextDayTotal = 0;
