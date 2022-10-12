@@ -63,9 +63,9 @@ public class AirQuality {
                 nextDayTotal += forecastedAirValue;
             }
             double nextDayAverage = nextDayTotal / 24.0;
-            nextDayAirQuality = "24 Hour Average Air Quality Forecast: " + getAQImessage(nextDayAverage);
+            nextDayAirQuality = "24 hour average air quality forecast: " + getAQImessage(nextDayAverage);
 
-            // Calcualte average air quality for 24-48 hours from current time
+            // Calculate average air quality for 24-48 hours from current time
             int futureTotal = 0;
             for (int i = 25; i < 49; i++) {
                 JSONObject airForecast = array.getJSONObject(i).getJSONObject("main");
