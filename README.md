@@ -1,3 +1,6 @@
+<h1>Washington Trail Conditions</h1>
+
+<strong>Purpose:<strong>
 The purpose of this project is to provide easily accessible weather forecasts for hiking trails listed on the Washington Trails Association (WTA)
 website. 
 
@@ -14,5 +17,5 @@ used to build the user interface on the front end.
 This website was deployed on the Heroku cloud application platform, and the website is available for use to the public. A link to the website is 
 provided below:
 
-http://washington-trail-conditions.herokuapp.com/washingtontrailsconditions/
+
 
