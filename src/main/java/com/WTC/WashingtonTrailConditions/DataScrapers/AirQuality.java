@@ -1,6 +1,7 @@
 package com.WTC.WashingtonTrailConditions.DataScrapers;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -46,6 +47,7 @@ public class AirQuality {
             }
             reader.close();
 
+
             // Extract air quality information from json string
             JSONObject obj = new JSONObject(result.toString());
             JSONArray array = obj.getJSONArray("list");
@@ -57,23 +59,29 @@ public class AirQuality {
 
             // Calculate average air quality for next 24 hours
             int nextDayTotal = 0;
-            for (int i = 1; i < 25; i++) {
+            int timespan = 23;
+            for (int i = 1; i < timespan + 1; i++) {
                 JSONObject airForecast = array.getJSONObject(i).getJSONObject("main");
+
                 Integer forecastedAirValue = airForecast.getInt("aqi");
                 nextDayTotal += forecastedAirValue;
             }
-            double nextDayAverage = nextDayTotal / 24.0;
+            double nextDayAverage = nextDayTotal / timespan * 1.0;
             nextDayAirQuality = "24 hour average air quality forecast: " + getAQImessage(nextDayAverage);
 
             // Calculate average air quality for 24-48 hours from current time
             int futureTotal = 0;
-            for (int i = 25; i < 49; i++) {
-                JSONObject airForecast = array.getJSONObject(i).getJSONObject("main");
-                Integer forecastedAirValue = airForecast.getInt("aqi");
-                futureTotal += forecastedAirValue;
+            try {
+                for (int i = 25; i < 49; i++) {
+                    JSONObject airForecast = array.getJSONObject(i).getJSONObject("main");
+                    Integer forecastedAirValue = airForecast.getInt("aqi");
+                    futureTotal += forecastedAirValue;
+                }
+                double futureAverage = futureTotal / 24.0;
+                futureAirQuality = "24 to 48 hour average air quality forecast: " + getAQImessage(futureAverage);
+            } catch (JSONException jse) {
+                futureAirQuality = "An error occurred when fetching future air quality";
             }
-            double futureAverage = futureTotal / 24.0;
-            futureAirQuality = "24 to 48 hour average air quality forecast: " + getAQImessage(futureAverage);
 
 
         } catch (IOException ioe) {
