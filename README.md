@@ -1,3 +1,8 @@
+<h1>
+  <a href="http://washington-trail-conditions.herokuapp.com/washingtontrailsconditions/">Washington Trail Conditions</a>
+</h1>
+
+<strong>Purpose:</strong>
 The purpose of this project is to provide easily accessible weather forecasts for hiking trails listed on the Washington Trails Association (WTA)
 website. 
 
@@ -11,8 +16,7 @@ or trail region may be added.
 The website for this application was created using the Spring Boot framework, and the backend is written entirely in Java. Thymeleaf templates are 
 used to build the user interface on the front end. 
 
-This website was deployed on the Heroku cloud application platform, and the website is available for use to the public. A link to the website is 
-provided below:
+This website was deployed on the Heroku cloud application platform, and the website is available for use to the public. Visit the website <a href="http://washington-trail-conditions.herokuapp.com/washingtontrailsconditions/">here</a>.
 
-http://washington-trail-conditions.herokuapp.com/washingtontrailsconditions/
+
 
