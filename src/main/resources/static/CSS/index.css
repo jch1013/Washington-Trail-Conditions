@@ -17,4 +17,14 @@ body {
     width: 50vw;
     top: 25vh;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid;
+    border-color: black;
+}
+
+.searchbar {
+    height: 10%;
+    border-radius: 5px;
 }

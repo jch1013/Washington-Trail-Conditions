@@ -8,6 +8,7 @@
 <body>
 <img th:src="@{/images/home-background.png}" class="background-image">
 <div class="main-container">
+  <h2>Washington Trail Conditions</h2>
   <div class="search">
     <form th:action="@{/search}" method="get">
       <input class="searchbar" type="text" name="keyword" th:value="${keyword}"  placeholder="Search for a trail..." size="50" >
