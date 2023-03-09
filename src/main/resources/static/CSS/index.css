@@ -25,6 +25,12 @@ body {
     border-color: black;
 }
 
+.title {
+    background-color: #8AAB37;
+    width: 100%;
+    margin: 0px;
+}
+
 .search {
     margin-top: auto;
 }
@@ -47,12 +53,17 @@ body {
 .button {
     margin: 10px;
     border-radius: 8px;
-    background-color: green;
+    background-color: #8AAB37;
     border: none;
     padding: 6px;
 }
 
 @media (max-width: 480px) {
+
+    .background-image {
+        height: 0px;
+    }
+
     .main-container {
         width: 100vw;
         height: 100vh;
