@@ -20,11 +20,45 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     border: solid;
     border-color: black;
 }
 
-.searchbar {
-    height: 10%;
-    border-radius: 5px;
+.search {
+    margin-top: auto;
 }
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchbar {
+    width: 75%;
+    height: 20px;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 3px;
+}
+
+.button {
+    margin: 10px;
+    border-radius: 8px;
+    background-color: green;
+    border: none;
+    padding: 6px;
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        width: 100vw;
+        height: 100vh;
+        top: 0px;
+        border: none;
+    }
+}
+
+

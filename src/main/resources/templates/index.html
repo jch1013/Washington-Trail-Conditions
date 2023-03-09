@@ -10,7 +10,7 @@
 <div class="main-container">
   <h2>Washington Trail Conditions</h2>
   <div class="search">
-    <form th:action="@{/search}" method="get">
+    <form th:action="@{/search}" method="get" class="search-form">
       <input class="searchbar" type="text" name="keyword" th:value="${keyword}"  placeholder="Search for a trail..." size="50" >
       <button type="submit" class="button" >Search</button>
     </form>
