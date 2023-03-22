@@ -9,11 +9,17 @@
 <img th:src="@{/images/home-background.png}" class="background-image">
 <div class="main-container">
   <h2 class="title">Washington Trail Conditions</h2>
+  <div class="image-container">
+    <img th:src="@{/images/home-image.png}" class="home-image">
+  </div>
   <div class="search">
     <form th:action="@{/search}" method="get" class="search-form">
       <input class="searchbar" type="text" name="keyword" th:value="${keyword}"  placeholder="Search for a trail..." size="50" >
       <button type="submit" class="button" >Search</button>
     </form>
+  </div>
+  <div class="navbar">
+    <p>test</p>
   </div>
 </div>
 </body>
