@@ -1,5 +1,5 @@
 <h1>
-  <a href="http://washington-trail-conditions.herokuapp.com/washingtontrailsconditions/">Washington Trail Conditions</a>
+Washington Trail Conditions
 </h1>
 
 <strong>Purpose:</strong>
@@ -16,7 +16,7 @@ or trail region may be added.
 The website for this application was created using the Spring Boot framework, and the backend is written entirely in Java. Thymeleaf templates are 
 used to build the user interface on the front end. 
 
-This website was deployed on the Heroku cloud application platform, and the website is available for use to the public. Visit the website <a href="http://washington-trail-conditions.herokuapp.com/washingtontrailsconditions/">here</a>.
+This website was deployed on the Heroku cloud application platform, but due to updates in the Heroku hosting policy the site is not currently live.
 
 
 
